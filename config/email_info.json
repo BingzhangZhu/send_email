@@ -1,0 +1,6 @@
+{
+    "recipients": ["recipient email 1", "recipient email 2"],
+    "subject": "subject",
+    "body": "text",
+    "attachment": "path to attachment"
+}

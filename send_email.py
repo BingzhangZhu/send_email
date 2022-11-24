@@ -7,29 +7,22 @@ from email.message import EmailMessage
 from email.utils import COMMASPACE
 
 def get_config(file_name):
-    """_summary_
-
-    Args:
-        file_name (_type_): _description_
-
-    Returns:
-        _type_: _description_
-    """
+    
     with open(file_name, 'r') as config_json:
         config_data = json.load(config_json)
     return config_data
 
-def send_email(account_info, recipients, subject, body, filename=None):
+def send_email(account_info, recipients, subject, body, file_path=None):
     """
     Args:
-        account_info (_type_): _description_
-        recipients (_type_): _description_
-        subject (_type_): _description_
-        body (_type_): _description_
-        filename (_type_, optional): _description_. Defaults to None.
+        account_info (dict): email account info including username and password
+        recipients (list): a list of recipients
+        subject (str): the subject of the email
+        body (str): the body of the email
+        file_path (str, optional): the path to the attachment. Defaults to None.
 
     Raises:
-        ValueError: _description_
+        ValueError: Invalid file path
     """
     
     # creates an instance of EmailMessage
@@ -41,17 +34,17 @@ def send_email(account_info, recipients, subject, body, filename=None):
     message.set_content(body)
 
     # store the attachment to the message if the file exists
-    if filename:
-        if not os.path.isfile(filename):
-            raise ValueError(f"File does not exist: {filename}")
+    if file_path:
+        if not os.path.isfile(file_path):
+            raise ValueError(f"File does not exist: {file_path}")
         # get the MIME type and subtype of the attachment 
-        mime_type, _ = mimetypes.guess_type(filename)
+        mime_type, _ = mimetypes.guess_type(file_path)
         mime_type, mime_subtype = mime_type.split('/')
-        with open('attachment.csv', 'rb') as file:
+        with open(file_path, 'rb') as file:
             message.add_attachment(file.read(),
             maintype=mime_type,
             subtype=mime_subtype,
-            filename='attachment.csv')
+            filename=os.path.split(file_path)[-1])
 
     # print message in log
     print(message)
