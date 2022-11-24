@@ -3,7 +3,7 @@
 ## Usage
 
 1. Install the required library using `pip install -r requirement.txt`
-2. Edit the two files: `config/gmail_account_info.json` and `config/email_info.json`
+2. Edit the two files: `config/sender_account.json` and `config/email_info.json`
 3. Run the script using `sh run.sh`
 
 ## Structure:
@@ -11,7 +11,7 @@
 ├── attachment.csv
 ├── config
 │   ├── email_info.json
-│   └── gmail_account_info.json
+│   └── sender_account.json
 ├── out.log
 ├── README.md
 ├── requirement.txt

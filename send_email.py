@@ -50,7 +50,7 @@ def send_email(account_info, recipients, subject, body, file_path=None):
     print(message)
 
     # creates SMTP_SSL session to connect securely to the remote server.
-    mail_server = smtplib.SMTP_SSL('smtp.gmail.com')
+    mail_server = smtplib.SMTP_SSL(account_info['smtp_server'])
     # Authentication
     mail_server.login(account_info['username'], account_info['password'])
     # sending the mail
@@ -66,14 +66,14 @@ if __name__=="__main__":
     # df = pd.DataFrame(data = data)
     # df.to_csv("attachment.csv")
 
-    parser = argparse.ArgumentParser(description='Send email.')
+    parser = argparse.ArgumentParser(description='send email')
     parser.add_argument('account_info_path', type=str, 
                         help='path to the email account info config')
     parser.add_argument('email_info_path', type=str, 
                         help='path to the email info config')
     args = parser.parse_args()
     
-    gmail_account_info = get_config(args.account_info_path)
+    sender_account_info = get_config(args.account_info_path)
     email_info = get_config(args.email_info_path)
     
-    send_email(gmail_account_info, email_info["recipients"], email_info["subject"], email_info["body"], email_info.get("attachment", None))
+    send_email(sender_account_info, email_info["recipients"], email_info["subject"], email_info["body"], email_info.get("attachment", None))

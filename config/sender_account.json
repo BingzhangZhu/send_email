@@ -1,0 +1,5 @@
+{
+    "username": "sender email account", 
+    "password": "password",
+    "smtp_server": "smtp.gmail.com"
+}
