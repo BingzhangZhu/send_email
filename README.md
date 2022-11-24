@@ -11,7 +11,6 @@
 ├── config
 │   ├── email_info.json
 │   └── sender_account.json
-├── out.log
 ├── README.md
 ├── run.sh
 └── send_email.py
