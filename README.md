@@ -2,9 +2,8 @@
 
 ## Usage
 
-1. Install the required library using `pip install -r requirement.txt`
-2. Edit the two files: `config/sender_account.json` and `config/email_info.json`
-3. Run the script using `sh run.sh`
+1. Edit the two files: `config/sender_account.json` and `config/email_info.json`. (If you are using Gmail as the sender account, set the App Passwords according to the 2nd reference. The App Password is a 16-character code and you should use it as the password here)
+2. Run the script using `sh run.sh`
 
 ## Structure:
 ```
@@ -14,12 +13,10 @@
 │   └── sender_account.json
 ├── out.log
 ├── README.md
-├── requirement.txt
 ├── run.sh
 └── send_email.py
 ```
 
 ## Reference:
 1. https://levelup.gitconnected.com/send-email-using-python-30fc1f203505
-2. https://stackoverflow.com/questions/16512592/login-credentials-not-working-with-gmail-smtp 
-3. https://support.google.com/accounts/answer/185833?hl=en
+2. https://support.google.com/accounts/answer/185833?hl=en
