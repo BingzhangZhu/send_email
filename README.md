@@ -1,4 +1,4 @@
-## Send email with attachment through python script.
+# Send email with attachment through python script.
 
 ## Usage
 
