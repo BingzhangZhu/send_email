@@ -12,11 +12,12 @@ def get_config(file_name):
         config_data = json.load(config_json)
     return config_data
 
-def send_email(account_info, recipients, subject, body, file_path=None):
+def send_email(account_info, recipients, cc, subject, body, file_path=None):
     """
     Args:
         account_info (dict): email account info including username and password
         recipients (list): a list of recipients
+        cc (list): a list of carbon copy
         subject (str): the subject of the email
         body (str): the body of the email
         file_path (str, optional): the path to the attachment. Defaults to None.
@@ -30,6 +31,7 @@ def send_email(account_info, recipients, subject, body, file_path=None):
     # set params of the email 
     message['From'] = account_info['username']
     message['To'] = COMMASPACE.join(recipients)
+    message['CC'] = cc
     message['Subject'] = subject
     message.set_content(body)
 
@@ -76,4 +78,4 @@ if __name__=="__main__":
     sender_account_info = get_config(args.account_info_path)
     email_info = get_config(args.email_info_path)
     
-    send_email(sender_account_info, email_info["recipients"], email_info["subject"], email_info["body"], email_info.get("attachment", None))
+    send_email(sender_account_info, email_info["recipients"], email_info["cc"], email_info["subject"], email_info["body"], email_info.get("attachment", None))

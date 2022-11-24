@@ -1,5 +1,6 @@
 {
-    "recipients": ["recipient email 1", "recipient email 2"],
+    "recipients": ["example1@example.com", "example2@example.com"],
+    "cc": ["example3@example.com"],
     "subject": "subject",
     "body": "text",
     "attachment": "path to attachment"
